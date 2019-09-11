@@ -8,6 +8,7 @@ use App\Model\Product;
 class Review extends Model
 {
     function product(){
+    	
     	return $this->belongsTo(Product::class);
     }
 }
