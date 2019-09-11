@@ -8,6 +8,7 @@ use App\Model\Review;
 class Product extends Model
 {
     function reviews(){
+    	
     	return $this->hasMany(Review::class);
     }
 }

@@ -2,10 +2,11 @@
 
 namespace App\Http\Resources\Product;
 
-use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Http\Resources\Json\Resource;
 
-class ProductResource extends JsonResource
-{
+
+class ProductResource extends Resource
+{ 
     /**
      * Transform the resource into an array.
      *
@@ -21,17 +22,16 @@ class ProductResource extends JsonResource
           'Price' => $this->price,
           'Stock' => $this->stock == 0 ? 'Out of Stock' : $this->stock,
           'Discount' => $this->discount,
+
           'TotalPrice' => round((1-($this->discount/100))*$this->price,2),
 
           /* 
-             totalprice is =>
+             totalprice with discount =>
                      17/100 = .17
                      1-.17 = .83
                      .83*price
 
            */
-
-
           // 'Rating' =>$this->reviews->sum('star')/$this->reviews->count(),
           // round for if divide by zero then it give undefined error so use round
 
